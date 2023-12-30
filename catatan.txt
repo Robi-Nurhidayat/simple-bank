@@ -1,0 +1,26 @@
+Isolasi level ada 4 menurut standar dari ANSI (American National Standards Institute)
+
+1. READ UNCOMMITTED:
+
+   - Transaksi dapat melihat perubahan yang dibuat oleh transaksi lain yang masih berlangsung.
+   - Tidak ada penguncian pembaca (read lock) yang diterapkan pada data yang sedang dibaca.
+   contoh: saat melakukan transaksi, walaupun belum di commit perubahan data tersebut langsung terjadi.
+
+2. READ COMMITTED:
+
+   - Transaksi hanya dapat melihat perubahan yang telah dikonfirmasi (committed) oleh transaksi lain.
+   - Penguncian pembaca diterapkan hanya selama pembacaan data.
+   contoh: ini kebalikan dari atas, di commit dulu baru perubahan nya tampil.
+
+3. REPEATABLE READ:
+
+   - Transaksi hanya dapat melihat perubahan yang telah dikonfirmasi dan semua pembacaan berulang dari data yang sama akan menghasilkan hasil yang konsisten.
+   - Penguncian pembaca diterapkan selama pembacaan data dan dilepaskan setelah transaksi selesai.
+   contoh: kalau yang ini, saat kita melakukan transaksi walaupun kita melakukan commit, perubahan di tempat lain belum tampil, tapi jika melakukan
+   transaksi seperti yang lain, data nya langsung berubah 2x lipat sesuai jumlah orng yang melakukan transaksi.
+
+4. SERIALIZABLE:
+
+   - Transaksi seolah-olah berjalan secara terisolasi satu sama lain, sehingga hasilnya mirip dengan eksekusi transaksi secara serial.
+   - Penguncian pembaca dan penulis diterapkan untuk memastikan isolasi transaksi yang paling tinggi.
+   contoh: saat orang 1 melakukan transaksi akan gagal, sampai orang kedua commit dulu baru orang ke 1 berhasil

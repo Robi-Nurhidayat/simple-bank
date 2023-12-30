@@ -1,0 +1,32 @@
+# version: "2"
+# cloud:
+#     organization: "pwpagi"
+#     # Replace <PROJECT_ID> with your project ID from the sqlc Cloud dashboard
+#     project: "01HJN0WVW1FDJK3BETDY4HASCP"
+# sql:
+#     - engine: "postgresql"
+#       queries: "./db/query"
+#       schema: "./db/migrations"
+#       database:
+#           managed: true
+#       gen:
+#           go:
+#               package: "db"
+#               out: "db/sqlc"
+#               sql_package: "pgx/v"
+#               emit_json_tags: true
+#               emit_prepared_queries: false
+#               emit_interface: false
+#               emit_exact_table_names: false
+
+version: "1"
+packages:
+  - name: "db"
+    path: "./db/sqlc/"
+    queries: "./db/query/"
+    schema: "./db/migrations/"
+    engine: "postgresql"
+    emit_json_tags: true
+    emit_prepared_queries: false
+    emit_interface: false
+    emit_exact_table_names: false
